@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+
+
+                function buy() {
+
+                    if (!$("#symbol").val())
+                    {
+                        alert("missing symbol");
+                        return false;
+                    }
+                    else if(!$("#shares").val()||$("#shares").val()<=0)
+                    {
+                        alert("Enter a positive integer amount of shares");
+                        return false;
+
+
+                    }
+                    return true;
+                }
+
+
+</script>
+{% endblock %}
+
+{% block main %}
+    <form action="/buy" id= "buy" method="post" onsubmit= "return buy()">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="symbol" name="symbol" placeholder="Symbol" type="text"/>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id= "shares" name="shares" placeholder="Shares" type="number"/>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+{% endblock %}
